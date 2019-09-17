@@ -38,7 +38,7 @@ def legalMove(player, move):
         return True
     return False
 
-"""[N,S,E,W]"""
+"""[N,E,S,W]"""
 board = [
     [[0,1,1,0], [0,1,0,1], [0,0,1,1]],
     [[1,1,1,0], [0,0,1,1], [1,0,1,0]],
