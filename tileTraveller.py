@@ -14,6 +14,14 @@ def printAvailableMoves(player):
 
 def movePlayer(player, move):
     """Moves the player"""
+    if move == "N":
+        player[0] -= 1
+    elif move == "S":
+        player[0] += 1
+    if move == "E":
+        player[1] += 1
+    elif move == "W":
+        player[1] -= 1
 
     printAvailableMoves(player)
     return player
@@ -49,6 +57,7 @@ while player != [2,2]:
     direction = input("Direction: ").upper()
     if legalMove(player, direction):
         player = movePlayer(player,direction)
+        print(player)
     else:
         print("Not a valid direction!")
 else:
