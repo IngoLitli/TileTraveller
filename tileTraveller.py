@@ -32,13 +32,8 @@ def playerPosition():
 
 def legalMove(player, move):
     """Checks if the current direciton is a legal move"""
-    if move == "N" and playerPosition()[0]:
-        return True
-    elif move == "S" and playerPosition()[1]:
-        return True
-    elif move == "E" and playerPosition()[2]:
-        return True
-    elif move == "W" and playerPosition()[3]:
+    Moves = ["N","S","E","W"]
+    if playerPosition()[Moves.index(move)]:
         return True
     return False
 
@@ -57,7 +52,6 @@ while player != [2,2]:
     direction = input("Direction: ").upper()
     if legalMove(player, direction):
         player = movePlayer(player,direction)
-        print(player)
     else:
         print("Not a valid direction!")
 else:
