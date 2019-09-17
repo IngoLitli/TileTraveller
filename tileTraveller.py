@@ -1,1 +1,1 @@
-#Git-hub repository:    https://github.com/IngoLitli/TileTraveller
+#Git-hub repository:    https://github.com/IngoLitli/TileTraveller.git
