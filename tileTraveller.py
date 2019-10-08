@@ -1,5 +1,5 @@
 # Git-hub repository:    https://github.com/IngoLitli/TileTraveller.git
-# blaaa
+
 
 def printAvailableMoves(player):
     """Prints out all available moves for the player"""
@@ -43,16 +43,25 @@ def legalMove(player, move):
     return False
 
 
-"""[N,E,S,W]"""
+def hasCoin():
+    return
+
+
+def pullLever():
+    return
+
+
+"""[N,E,S,W, lever]"""
 board = [
-    [[0, 1, 1, 0], [0, 1, 0, 1], [0, 0, 1, 1]],
-    [[1, 1, 1, 0], [0, 0, 1, 1], [1, 0, 1, 0]],
-    [[1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]]
+    [[0, 1, 1, 0, 0], [0, 1, 0, 1, 1], [0, 0, 1, 1, 0]],
+    [[1, 1, 1, 0, 1], [0, 0, 1, 1, 1], [1, 0, 1, 0, 1]],
+    [[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]]
     ]
 
 player = [2, 0]
 
 printAvailableMoves(player)
+LEVER = 4
 
 while player != [2, 2]:
     direction = input("Direction: ").upper()
