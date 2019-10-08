@@ -1,7 +1,8 @@
 # Git-hub repository:    https://github.com/IngoLitli/TileTraveller.git
 import random
 LEVER = 4
-DIRECTIONS = 'n','e','s','w'
+results = []
+DIRECTIONS = "n", "e", "s", "w"
 LEVER_CHOICE = 'y','n'
 def printAvailableMoves(player):
     """Prints out all available moves for the player"""
@@ -80,16 +81,18 @@ run = True
 while run:
     inventory = 0
     player = [2, 0]
-    valid_moves = 0
+    #valid_moves = 0
     printAvailableMoves(player)
+    total_moves = 0
 
 
     while player != [2, 2]:
         #direction = input("Direction: ").upper()
         direction = random.choice(DIRECTIONS).upper()
         print('Direction:', direction.lower())
+        total_moves += 1
         if legalMove(player, direction):
-            valid_moves +=1
+            #valid_moves += 1
             player = movePlayer(player, direction)
             inventory = hasCoin(inventory)
             if player != [2, 2]:
@@ -98,5 +101,5 @@ while run:
             print("Not a valid direction!")
             printAvailableMoves(player)
     else:
-        print("Victory! Total coins {}. Valid moves {}.".format(inventory,valid_moves))
+        print("Victory! Total coins {}. Moves {}.".format(inventory, total_moves))
         run = play()
