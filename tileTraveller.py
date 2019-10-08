@@ -77,8 +77,10 @@ while player != [2, 2]:
     if legalMove(player, direction):
         player = movePlayer(player, direction)
         inventory = hasCoin(inventory)
-        printAvailableMoves(player)
+        if player != [2, 2]:
+            printAvailableMoves(player)
     else:
         print("Not a valid direction!")
+        printAvailableMoves(player)
 else:
     print("Victory! Total coins {}.".format(inventory))
