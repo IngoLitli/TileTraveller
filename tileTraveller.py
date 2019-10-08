@@ -25,8 +25,6 @@ def movePlayer(player, move):
     elif move == "W":
         player[1] -= 1
 
-    if player != [2, 2]:
-        printAvailableMoves(player)
     return player
 
 
@@ -43,12 +41,22 @@ def legalMove(player, move):
     return False
 
 
-def hasCoin():
-    return
+def hasCoin(inventory):
+    if playerPosition()[LEVER]:
+        pulled = pullLever()
+        if pulled:
+            inventory += pulled
+            print('You received 1 coin, your total is now {}.'.format(inventory))
+    return inventory
+    
 
 
 def pullLever():
-    return
+    pull = input('Pull a lever (y/n): ').upper()
+    if pull == 'Y':
+        board[player[0]][player[1]][LEVER] = 0
+        return 1
+    return 0
 
 
 """[N,E,S,W, lever]"""
@@ -57,6 +65,7 @@ board = [
     [[1, 1, 1, 0, 1], [0, 0, 1, 1, 1], [1, 0, 1, 0, 1]],
     [[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]]
     ]
+inventory = 0
 
 player = [2, 0]
 
@@ -67,7 +76,9 @@ while player != [2, 2]:
     direction = input("Direction: ").upper()
     if legalMove(player, direction):
         player = movePlayer(player, direction)
+        inventory = hasCoin(inventory)
+        printAvailableMoves(player)
     else:
         print("Not a valid direction!")
 else:
-    print("Victory!")
+    print("Victory! Total coins {}.".format(inventory))
