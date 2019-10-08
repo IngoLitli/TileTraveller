@@ -1,4 +1,5 @@
 # Git-hub repository:    https://github.com/IngoLitli/TileTraveller.git
+import random
 
 
 def printAvailableMoves(player):
@@ -70,7 +71,6 @@ board = [
     ]
 
 run = True
-
 while run:
     inventory = 0
     player = [2, 0]
