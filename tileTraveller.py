@@ -48,13 +48,11 @@ def hasCoin(inventory):
             inventory += pulled
             print('You received 1 coin, your total is now {}.'.format(inventory))
     return inventory
-    
 
 
 def pullLever():
     pull = input('Pull a lever (y/n): ').upper()
     if pull == 'Y':
-        board[player[0]][player[1]][LEVER] = 0
         return 1
     return 0
 
