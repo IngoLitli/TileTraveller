@@ -59,10 +59,8 @@ def pullLever():
 
 def play():
     if input("Play again (y/n): ").upper() == "Y":
-        inventory = 0
-        player = [2, 0]
-        return player, inventory
-
+        return True
+    return False
 
 """[N,E,S,W, lever]"""
 board = [
@@ -71,22 +69,25 @@ board = [
     [[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]]
     ]
 
-inventory = 0
-player = [2, 0]
+run = True
 
-printAvailableMoves(player)
-LEVER = 4
+while run:
+    inventory = 0
+    player = [2, 0]
 
-while player != [2, 2]:
-    direction = input("Direction: ").upper()
-    if legalMove(player, direction):
-        player = movePlayer(player, direction)
-        inventory = hasCoin(inventory)
-        if player != [2, 2]:
+    printAvailableMoves(player)
+    LEVER = 4
+
+    while player != [2, 2]:
+        direction = input("Direction: ").upper()
+        if legalMove(player, direction):
+            player = movePlayer(player, direction)
+            inventory = hasCoin(inventory)
+            if player != [2, 2]:
+                printAvailableMoves(player)
+        else:
+            print("Not a valid direction!")
             printAvailableMoves(player)
     else:
-        print("Not a valid direction!")
-        printAvailableMoves(player)
-else:
-    print("Victory! Total coins {}.".format(inventory))
-    player, inventory = play()
+        print("Victory! Total coins {}.".format(inventory))
+        run = play()
