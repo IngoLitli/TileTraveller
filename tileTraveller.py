@@ -1,7 +1,8 @@
 # Git-hub repository:    https://github.com/IngoLitli/TileTraveller.git
 import random
-
-
+LEVER = 4
+DIRECTIONS = 'n','e','s','w'
+LEVER_CHOICE = 'y','n'
 def printAvailableMoves(player):
     """Prints out all available moves for the player"""
 
@@ -52,8 +53,10 @@ def hasCoin(inventory):
 
 
 def pullLever():
-    pull = input('Pull a lever (y/n): ').upper()
-    if pull == 'Y':
+    pull = random.choice(LEVER_CHOICE)
+    # input('Pull a lever (y/n): ').upper()
+    print('Pull a lever (y/n):',pull)
+    if pull == 'y':
         return 1
     return 0
 
@@ -70,16 +73,21 @@ board = [
     [[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]]
     ]
 
+random.seed(int(input('Input seed: ')))
+
+
 run = True
 while run:
     inventory = 0
     player = [2, 0]
 
     printAvailableMoves(player)
-    LEVER = 4
+
 
     while player != [2, 2]:
-        direction = input("Direction: ").upper()
+        #direction = input("Direction: ").upper()
+        direction = random.choice(DIRECTIONS).upper()
+        print('Direction:', direction.lower())
         if legalMove(player, direction):
             player = movePlayer(player, direction)
             inventory = hasCoin(inventory)
