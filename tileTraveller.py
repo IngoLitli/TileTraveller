@@ -80,7 +80,7 @@ run = True
 while run:
     inventory = 0
     player = [2, 0]
-
+    valid_moves = 0
     printAvailableMoves(player)
 
 
@@ -89,6 +89,7 @@ while run:
         direction = random.choice(DIRECTIONS).upper()
         print('Direction:', direction.lower())
         if legalMove(player, direction):
+            valid_moves +=1
             player = movePlayer(player, direction)
             inventory = hasCoin(inventory)
             if player != [2, 2]:
@@ -97,5 +98,5 @@ while run:
             print("Not a valid direction!")
             printAvailableMoves(player)
     else:
-        print("Victory! Total coins {}.".format(inventory))
+        print("Victory! Total coins {}. Valid moves {}.".format(inventory,valid_moves))
         run = play()
